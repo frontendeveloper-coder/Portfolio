@@ -288,3 +288,13 @@ h1 {
     color: #dcdcdc;
     font-size: 20px;
 }
+
+.light-mode {
+  display: flex;
+  gap: 15px;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 4px;
+}

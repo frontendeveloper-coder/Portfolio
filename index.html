@@ -3,23 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title data-translate="title">Mustafo Dushanbiev - Web Developer</title>
 
     <link rel="stylesheet" href="styles/index.css" />
-    
+
     <!-- Подключаем иконки от Font Awesome -->
-    <link rel="stylesheet" href="cdnjs.cloudflare.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Стили для перевода */
+      .translation-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 10000;
+        display: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
   </head>
   <body>
+    <div id="google_translate_element" style="display: none"></div>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,ru,zh-CN",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <header>
       <img class="img-logo" src="img/headerLogo.svg" alt="Logo" />
 
       <nav class="nav-header">
         <ul class="nav-links-header">
-          <li><a href="#header" class="links-header">About</a></li>
-          <li><a href="#mySkills" class="links-header">Skills</a></li>
-          <li><a href="#myProjects" class="links-header">Portfolio</a></li>
-          <li><a href="#footer" class="links-header">Contact</a></li>
+          <li>
+            <a href="#header" class="links-header" data-translate="about"
+              >About</a
+            >
+          </li>
+          <li>
+            <a href="#mySkills" class="links-header" data-translate="skills"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              href="#myProjects"
+              class="links-header"
+              data-translate="portfolio"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a href="#footer" class="links-header" data-translate="contact"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
 
@@ -30,20 +84,35 @@
           <i class="fas fa-sun"></i>
           <div class="ball"></div>
         </label>
+
+        <select class="language-select">
+          <option value="en" selected>US</option>
+          <option value="ru">RU</option>
+          <option value="cn">中文</option>
+        </select>
       </div>
     </header>
 
     <main>
       <section class="main-homepage">
         <div class="main-welcome">
-            <h1>My name is&nbsp;<span class="text-user-name"> Mustafo Dushanbiev</span>.</h1>
-            <h2>I am a&nbsp;web developer.</h2>
-          <button class="btn-primary">Learn More</button>
+          <h1 data-translate="myName">
+            My name is&nbsp;<span class="text-user-name" data-translate="name"
+              >Mustafo Dushanbiev</span
+            >.
+          </h1>
+          <h2 data-translate="profession">I am a&nbsp;web developer.</h2>
+          <button class="btn-primary" data-translate="learnMore">
+            Learn More
+          </button>
         </div>
 
         <div class="main-homepage-image">
           <div class="photo-container">
-            <img src="img/retouch_2025101902071549.jpg" class="photo img-person" />
+            <img
+              src="img/retouch_2025101902071549.jpg"
+              class="photo img-person"
+            />
 
             <!-- Летающий дрон -->
             <svg class="drone" viewBox="0 0 200 200">
@@ -108,63 +177,71 @@
           </div>
         </div>
       </section>
-      
+
       <section class="my_skills" id="mySkills">
-        
         <div class="skills-hard skills">
-            <h2>Hard skills</h2>
-            <p>HTML (HTML 5)</p>
-            <p>CSS (CSS3), SASS (SCSS), Bootstrap, Animation</p>     
-            <p>JavaScript (ES6+, OOP)</p>
-            <p>React</p>
-            <p>Git (GitHub, GitLab)</p> 
-            <p>Figma</p>
-            <p>English level - B2</p>
+          <h2 data-translate="hardSkills">Hard skills</h2>
+          <p data-translate="html">HTML (HTML 5)</p>
+          <p data-translate="css">
+            CSS (CSS3), SASS (SCSS), Bootstrap, Animation
+          </p>
+          <p data-translate="js">JavaScript (ES6+, OOP)</p>
+          <p data-translate="react">React</p>
+          <p data-translate="git">Git (GitHub, GitLab)</p>
+          <p data-translate="figma">Figma</p>
+          <p data-translate="english">English level - B2</p>
         </div>
-        
+
         <div class="skills-soft skills">
-            <h2>Soft skills</h2>
-            <p>Teamwork and Collaboration</p>
-            <p>Problem-Solving Skills</p>
-            <p>Time Management and Organization</p>
-            <p>Adaptability and Flexibility</p>
-            <p>Communication Skills</p>
-            <p>Critical Thinking</p>
-            <p>Attention to Detail</p>
+          <h2 data-translate="softSkills">Soft skills</h2>
+          <p data-translate="teamwork">Teamwork and Collaboration</p>
+          <p data-translate="problem">Problem-Solving Skills</p>
+          <p data-translate="time">Time Management and Organization</p>
+          <p data-translate="adapt">Adaptability and Flexibility</p>
+          <p data-translate="communication">Communication Skills</p>
+          <p data-translate="thinking">Critical Thinking</p>
+          <p data-translate="detail">Attention to Detail</p>
         </div>
-        
       </section>
-      
-      <!-- Porfolio Section -->  
+
+      <!-- Portfolio Section -->
       <section class="my_projects" id="myProjects">
-        
-        <h2>My Projects</h2>
-        
+        <h2 data-translate="myProjects">My Projects</h2>
+
         <div class="projects-container">
-            <div class="project-card">
-                <img src="img/project1.png" alt="Project 1" class="project-image" />
-                <h3 class="project-title">Project 1</h3>
-                <p class="project-description">Description of Project 1.</p>
-            </div>
-            <div class="project-card">
-                <img src="img/project2.png" alt="Project 2" class="project-image" />
-                <h3 class="project-title">Project 2</h3>
-                <p class="project-description">Description of Project 2.</p>
-            </div>
-            <div class="project-card">
-                <img src="img/project3.png" alt="Project 3" class="project-image" />
-                <h3 class="project-title">Project 3</h3>
-                <p class="project-description">Description of Project 3.</p>
-            </div>
+          <div class="project-card">
+            <img src="img/project1.png" alt="Project 1" class="project-image" />
+            <h3 class="project-title" data-translate="project1">Project 1</h3>
+            <p class="project-description" data-translate="desc1">
+              Description of Project 1.
+            </p>
+          </div>
+          <div class="project-card">
+            <img src="img/project2.png" alt="Project 2" class="project-image" />
+            <h3 class="project-title" data-translate="project2">Project 2</h3>
+            <p class="project-description" data-translate="desc2">
+              Description of Project 2.
+            </p>
+          </div>
+          <div class="project-card">
+            <img src="img/project3.png" alt="Project 3" class="project-image" />
+            <h3 class="project-title" data-translate="project3">Project 3</h3>
+            <p class="project-description" data-translate="desc3">
+              Description of Project 3.
+            </p>
+          </div>
         </div>
-        
       </section>
-      
     </main>
-    
+
     <footer id="footer">
-        <p>&copy; 2024 Mustafo Dushanbiev. All rights reserved.</p>
+      <p data-translate="copyright">
+        &copy; 2024 Mustafo Dushanbiev. All rights reserved.
+      </p>
     </footer>
+
+    <!-- Уведомление о переводе -->
+    <div class="translation-notification" id="translation-notification"></div>
 
     <script src="js/main.js"></script>
   </body>
