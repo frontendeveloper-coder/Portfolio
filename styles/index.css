@@ -298,3 +298,25 @@ h1 {
   display: flex;
   gap: 4px;
 }
+
+
+/* Убирает верхнюю панель Google Translate */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+body {
+    top: 0px !important;
+}
+
+/* Убираем всплывающее окно */
+.goog-te-spinner-pos,
+.goog-te-balloon-frame {
+    display: none !important;
+}
+
+/* Убираем серую панель */
+#goog-gt-tt,
+.goog-tooltip,
+.goog-tooltip skiptranslate {
+    display: none !important;
+}
