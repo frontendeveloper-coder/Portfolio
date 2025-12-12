@@ -3,22 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate">
     <title>Mustafo Dushanbiev - Web Developer</title>
 
     <link rel="stylesheet" href="styles/index.css" />
     
     <!-- Подключаем иконки от Font Awesome -->
     <link rel="stylesheet" href="cdnjs.cloudflare.com" />
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
   <body>
-    <style>
-      .goog-logo-link { display: none !important; }
-      .goog-te-gadget { height: 0 !important; overflow: hidden; }
-    </style>
   
+    <div id="preloader">
+      <div class="particles-container" id="particles"></div>
+        <div class="loading-center">
+        <div class="loading-text">LOADING</div>
+          <div class="loading-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
     
+    </div>
     <header>
       <img class="img-logo" src="img/headerLogo.svg" alt="Logo" />
 
@@ -52,9 +59,11 @@
     <main>
       <section class="main-homepage">
         <div class="main-welcome">
-            <h1>My name is&nbsp;<span class="text-user-name"> Mustafo Dushanbiev</span>.</h1>
+            <h1 id="typeWriter">
+              My name is&nbsp;<span class="text-user-name">Mustafo Dushanbiev.</span>
+            </h1>
             <h2>I am a&nbsp;web developer.</h2>
-          <button class="btn-primary">Learn More</button>
+          <button class="btn-primary" id="learnMore">Learn More</button>
         </div>
 
         <div class="main-homepage-image">
@@ -147,6 +156,7 @@
             <p>Communication Skills</p>
             <p>Critical Thinking</p>
             <p>Attention to Detail</p>
+            <p>Ai (ChatGPT DeepSeek Gemini)</p>
         </div>
         
       </section>
@@ -182,6 +192,10 @@
         <p>&copy; 2024 Mustafo Dushanbiev. All rights reserved.</p>
     </footer>
 
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-tooltip" id="cursorTooltip"></div>
+    <div class="cursor-loading" id="cursorLoading"></div>
     <script src="js/main.js"></script>
   </body>
 </html>
