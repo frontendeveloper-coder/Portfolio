@@ -29,11 +29,19 @@ body {
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
-  padding: 10px 35px;
+  padding: 12px 35px;
   justify-content: space-between;
   background-color: var(--secondary-color);
+  box-sizing: border-box;
+  max-width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 img {
@@ -88,7 +96,7 @@ h6 {
 }
 
 .theme-label {
-  width: 60px; /* Сделал чуть меньше, чтобы влезло в шапку */
+  width: 60px; 
   height: 30px;
   background-color: var(--toggle-bg);
   display: flex;
@@ -103,9 +111,9 @@ h6 {
   box-sizing: border-box;
 }
 
-/* Иконки внутри (требуется Font Awesome) */
+
 .theme-label i {
-  color: #ffd700; /* Золотой/желтый для солнца/звезд */
+  color: #ffd700;
   font-size: 14px;
 }
 
@@ -256,7 +264,13 @@ h1 {
   border: none;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 1.2s ease;
+}
+
+.btn-primary:hover {
+  color: #4b0082;
+  transform: scale(200px);
+  transform: scale3d(10px);
 }
 
 /* SKILLS */
@@ -368,12 +382,38 @@ body {
   background: #0a0a0a;
   z-index: 9999;
   overflow: hidden;
+  transition: opacity 0.6s ease;
 }
+
+/* Класс для плавного скрытия прелоадера (используется только для прелоадера) */
+.preloader--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 .particles-container {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+/* Постоянный фон с частицами */
+.bg-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.6; 
+}
+
+/* Стили для частиц внутри фонового контейнера (меньше и более разреженные) */
+.bg-particles .particle {
+  background: rgba(255,255,255,0.9);
+  width: 2px;
+  height: 2px;
+  opacity: 0.9;
 }
 
 .particle {
@@ -443,206 +483,7 @@ body {
 }
 
 
-/* -- Курсор -- */
 
-
-/* Основные стили - НЕ скрываем стандартный курсор сразу */
-* {
-  cursor: auto;
-}
-
-/* Кастомный курсор будет показываться только если поддерживается */
-body.has-custom-cursor * {
-  cursor: none;
-}
-
-/* Полностью скрываем стандартный курсор */
-html, body, * {
-  cursor: none !important;
-}
-
-/* Но только если кастомный курсор активен */
-body.has-custom-cursor * {
-  cursor: none !important;
-}
-
-/* Особые случаи - если нужно сохранить стандартный курсор */
-body.has-custom-cursor textarea,
-body.has-custom-cursor input:not([type="submit"]):not([type="button"]):not([type="reset"]),
-body.has-custom-cursor [contenteditable="true"] {
-  cursor: text !important;
-}
-
-body.has-custom-cursor select {
-  cursor: pointer !important;
-}
-
-body.has-custom-cursor [disabled],
-body.has-custom-cursor :disabled {
-  cursor: not-allowed !important;
-}
-
-/* Основной курсор - похож на стандартный, но лучше */
-.custom-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(74, 144, 226, 0.2);
-  border: 1.5px solid #4a90e2;
-  pointer-events: none;
-  z-index: 9999;
-  transition: 
-    width 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border 0.2s ease,
-    background 0.2s ease,
-    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translate(-50%, -50%);
-  backdrop-filter: blur(1px);
-  box-shadow: 0 0 10px rgba(74, 144, 226, 0.1);
-}
-
-/* Точка в центре для точности */
-.cursor-dot {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: #4a90e2;
-  pointer-events: none;
-  z-index: 10000;
-  transition: all 0.1s ease;
-  transform: translate(-50%, -50%);
-}
-
-/* Состояния курсора - мягкие и естественные */
-
-/* При наведении на кликабельные элементы */
-.custom-cursor.hover {
-  background: rgba(74, 144, 226, 0.35);
-  border-color: #357ae8;
-  border-width: 2px;
-  transform: translate(-50%, -50%) scale(1.15);
-}
-
-/* Во время клика */
-.custom-cursor.click {
-  background: rgba(226, 74, 74, 0.25);
-  border-color: #e83535;
-  transform: translate(-50%, -50%) scale(0.9);
-}
-
-/* На текстовых элементах (похоже на текстовый курсор) */
-.custom-cursor.text {
-  width: 4px;
-  height: 22px;
-  border-radius: 2px;
-  background: rgba(156, 39, 176, 0.3);
-  border-color: #9c27b0;
-  border-width: 1px;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-/* На инпутах */
-.custom-cursor.input {
-  background: rgba(255, 193, 7, 0.2);
-  border-color: #ffc107;
-  border-style: dotted;
-  border-width: 2px;
-}
-
-/* На отключенных элементах */
-.custom-cursor.disabled {
-  background: rgba(158, 158, 158, 0.15);
-  border-color: #9e9e9e;
-  border-style: dashed;
-  border-width: 1.5px;
-  opacity: 0.7;
-}
-
-/* На ссылках (особый стиль) */
-.custom-cursor.link {
-  background: rgba(33, 150, 243, 0.25);
-  border-color: #2196f3;
-  border-width: 2px;
-}
-
-/* При наведении на изображения */
-.custom-cursor.image {
-  background: rgba(76, 175, 80, 0.2);
-  border-color: #4caf50;
-  border-width: 2px;
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-/* Минималистичная подсказка */
-.cursor-hint {
-  position: fixed;
-  background: rgba(30, 30, 30, 0.9);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 10001;
-  transform: translate(15px, -50%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.cursor-hint::before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: 5px solid transparent;
-  border-right-color: rgba(30, 30, 30, 0.9);
-}
-
-.cursor-hint.visible {
-  opacity: 1;
-}
-
-/* Плавные переходы для всех кликабельных элементов */
-a, button, [role="button"], 
-input[type="submit"], input[type="button"] {
-  transition: transform 0.15s ease, opacity 0.15s ease;
-}
-
-a:hover, button:hover, 
-[role="button"]:hover:not([disabled]) {
-  transform: translateY(-1px);
-}
-
-/* Мобильная адаптация */
-@media (hover: none) and (pointer: coarse) {
-  body.has-custom-cursor * {
-    cursor: auto !important;
-  }
-  
-  .custom-cursor,
-  .cursor-dot,
-  .cursor-hint {
-    display: none !important;
-  }
-}
-
-/* Для пользователей с prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .custom-cursor,
-  .cursor-dot,
-  .cursor-hint,
-  a, button {
-    transition: none !important;
-  }
-}
 
 /* Темная тема */
 @media (prefers-color-scheme: dark) {
@@ -667,3 +508,67 @@ a:hover, button:hover,
     border-right-color: rgba(255, 255, 255, 0.12);
   }
 }
+
+.links-header:hover {
+  color: #357ae8;
+}
+
+/* -- PROJECT -- */
+
+.projects-container {
+  padding: 20px;
+}
+
+.discription {
+  padding: 20px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction:row;
+  padding: 20px;
+}
+
+.img-portfolio {
+  width: 260px;
+  height: 260px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.my_projects {
+  padding-top: 50px;
+}
+
+.my_projects h2 {
+  text-align: center;
+}
+
+
+/*  -- FOOTER -- */
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.img-social {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  
+  transition: transform 0.3s ease-out;
+}
+
+.img-social:hover {
+  transform: scale(1.1);
+}
+
+.footerText {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 16px;
+}
+
